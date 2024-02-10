@@ -1,8 +1,9 @@
-import { Button } from "@repo/ui/components/ui/button";
+import {Button} from "@repo/ui/components/ui/button";
 
 export default function Page() {
-
-  return (
-   <Button>Pankaj</Button>
-  );
+  return (<>
+      <Button>
+        Press me
+      </Button>
+    </>);
 }
