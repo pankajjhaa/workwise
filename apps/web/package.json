@@ -9,19 +9,24 @@
     "lint": "eslint . --max-warnings 0"
   },
   "dependencies": {
+    "@auth/prisma-adapter": "^1.3.3",
     "@repo/ui": "workspace:*",
     "@tanstack/react-query": "^5.18.1",
     "@trpc/client": "11.0.0-next-beta.274",
     "@trpc/next": "11.0.0-next-beta.274",
     "@trpc/react-query": "11.0.0-next-beta.274",
     "@trpc/server": "11.0.0-next-beta.274",
+    "@types/bcryptjs": "^2.4.6",
     "@workwise/prisma": "*",
+    "bcryptjs": "^2.4.3",
     "next": "^14.0.4",
+    "next-auth": "5.0.0-beta.9",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
     "zod": "^3.22.4"
   },
   "devDependencies": {
+    "@workwise/types": "*",
     "@next/eslint-plugin-next": "^14.0.4",
     "@repo/eslint-config": "workspace:*",
     "@repo/typescript-config": "workspace:*",
