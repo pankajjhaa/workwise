@@ -10,23 +10,25 @@ export const register = async (values: z.infer<typeof registerSchema>) => {
     const validatedFields = registerSchema.safeParse(values);
 
     if (!validatedFields.success) {
+      return {error: "Invalid data!"};
     }
 
-    // const {email, password} = validatedFields.data;
-    // const hashedPassword = await bcrypt.hash(password, 10);
+    const {email, password} = validatedFields?.data;
+    const hashedPassword = await bcrypt.hash(password, 10);
 
-    // const existingUser = await getUserByEmail(email);
-    //
-    // if (existingUser) {
-    //     return {error: "Email already in use!"};
-    // }
-    //
-    // await prisma.user.create({
-    //     data: {
-    //         email,
-    //         password: hashedPassword,
-    //     },
-    // });
+    const existingUser = await getUserByEmail(email);
+
+    if (existingUser) {
+        return {error: "Email already in use!"};
+    }
+
+    await prisma.user.create({
+        data: {
+            name: values.name,
+            email,
+            password: hashedPassword,
+        },
+    });
 
     // const verificationToken = await generateVerificationToken(email);
     // await sendVerificationEmail(

@@ -29,21 +29,13 @@ export const newPasswordSchema = z.object({
   }),
 });
 export const registerSchema = z.object({
-  firstName: z
+  name: z
     .string()
     .min(1, {
       message: "This field is required",
     })
     .max(30, {
-      message: "First name must not be longer than 30 characters.",
-    }),
-  lastName: z
-    .string()
-    .min(1, {
-      message: "This field is required",
-    })
-    .max(30, {
-      message: "Last name must not be longer than 30 characters.",
+      message: "Name must not be longer than 30 characters.",
     }),
   email: z
     .string({

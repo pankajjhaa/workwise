@@ -25,6 +25,7 @@ export const login = async (
     if (!existingUser || !existingUser.email) {
         return { error: "Email does not exist!" };
     }
+    console.log("existingUser", existingUser)
 
     // if (!existingUser.emailVerifiedAt) {
     //     const verificationToken = await generateVerificationToken(
@@ -50,6 +51,7 @@ export const login = async (
         return { success: "Login success" }
     } catch (error) {
         if (error instanceof AuthError) {
+          console.log("error", error)
             switch (error.type) {
                 case "CredentialsSignin":
                     return { error: "Invalid credentials!" }

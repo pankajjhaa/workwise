@@ -2,7 +2,6 @@ import bcrypt from "bcryptjs";
 import type {NextAuthConfig} from "next-auth";
 import Credentials from "next-auth/providers/credentials";
 import prisma from "@workwise/prisma";
-import {User} from "@prisma/client";
 import {loginSchema} from "@workwise/prisma/zod/auth";
 export default {
     providers: [
@@ -15,7 +14,6 @@ export default {
                     const {email, password} = validatedFields.data;
 
                     const user = await prisma.user.findFirst({where: {email: email}})
-                    // const user = await getUserByEmail(email);
                     if (!user || !user.password) return null;
 
                     const passwordsMatch = await bcrypt.compare(
